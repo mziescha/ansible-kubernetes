@@ -21,7 +21,7 @@
 
 - name: Add apt repository for stable version
   apt_repository:
-    repo: deb [arch=amd64] https://download.docker.com/linux/ubuntu xenial stable
+    repo: "{{ docker_repo }}"
     state: present
 
 - name: Install docker and its dependecies
@@ -44,7 +44,7 @@
 
 - name: Adding apt repository for Kubernetes
   apt_repository:
-    repo: deb https://apt.kubernetes.io/ kubernetes-xenial main
+    repo: "{{ kubernetes_repo }}"
     state: present
     filename: kubernetes.list
 

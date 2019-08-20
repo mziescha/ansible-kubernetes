@@ -11,3 +11,7 @@
 
 # - include: install_httpd.yml
 # - include: copy_code.yml
+
+- name: Apply kube-flannel
+  command: kubectl apply -f {{ flannel_repo }}
+

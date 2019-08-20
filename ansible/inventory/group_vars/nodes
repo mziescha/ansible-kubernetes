@@ -5,4 +5,4 @@ join_token: m0nndw.fi4anf5wnsu2fld5
 
 discovery_token_ca_cert_hash: sha256:fed0786b8009xxxxxxxxxxxxxxxxxxxxxb7e908da43e799495e7251fee007709'
 
-join_ip: 0.0.0.0:6443
+join_ip: "{{ master_internal_ip }}:6443"

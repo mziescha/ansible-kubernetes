@@ -1,5 +1,11 @@
 ---
 # This playbook contains common plays that will be run on all nodes.
+- name: Install packages for check_mode
+  apt:
+    name: python-apt
+    state: present
+    update_cache: yes
+  check_mode: no
 
 - name: Install packages that allow apt to be used over HTTPS
   apt:

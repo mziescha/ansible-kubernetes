@@ -2,4 +2,4 @@
 # This playbook will let the node join to the cluster
 
 - name: Join to cluster
-  command: kubeadm join {{ join_ip }} --token {{ join_token }} --discovery-token-ca-cert-hash {{ discovery_token_ca_cert_hash }}
+  command: "kubeadm join {{ join_ip }} --token {{ join_token }} --discovery-token-ca-cert-hash {{ discovery_token_ca_cert_hash }}"

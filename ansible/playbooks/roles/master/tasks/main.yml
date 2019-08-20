@@ -7,11 +7,12 @@
     update_cache: yes
 
 - name: Initialize the Kubernetes cluster using kubeadm
-  command: kubeadm init --apiserver-advertise-address="192.168.50.10" --apiserver-cert-extra-sans="192.168.50.10"  --node-name k8s-master --pod-network-cidr=192.168.0.0/16
+  command: kubeadm init --pod-network-cidr {{ ip_range }}
 
-# - include: install_httpd.yml
-# - include: copy_code.yml
 
 - name: Apply kube-flannel
   command: kubectl apply -f {{ flannel_repo }}
+
+# - include: install_httpd.yml
+# - include: copy_code.yml
 

@@ -1,1 +1,2 @@
 flannel_repo: https://raw.githubusercontent.com/coreos/flannel/master/Documentation/kube-flannel.yml
+ip_range: "10.244.0.0/16"

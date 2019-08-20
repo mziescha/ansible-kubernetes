@@ -1,5 +1,5 @@
 ---
 # This playbook will let the node join to the cluster
 
-- name: Apply kube-flannel
-  command: kubeadm join {{ master_internal_ip }}:6443 --token m0nndw.fi4anf5wnsu2fld5 --discovery-token-ca-cert-hash sha256:fed0786b8009xxxxxxxxxxxxxxxxxxxxxb7e908da43e799495e7251fee007709'
+#- name: Apply kube-flannel
+#  command: kubeadm join 0.0.0.0:6443 --token m0nndw.fi4anf5wnsu2fld5 --discovery-token-ca-cert-hash sha256:fed0786b8009xxxxxxxxxxxxxxxxxxxxxb7e908da43e799495e7251fee007709'

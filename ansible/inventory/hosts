@@ -1,0 +1,17 @@
+[hosts:children]
+master
+nodes
+
+[all]
+mmaster ansible_user=root   ansible_host=mmaster
+m1 ansible_user=root   ansible_host=m1
+m2 ansible_user=root   ansible_host=m2
+m3 ansible_user=root   ansible_host=m3
+
+[master]
+mmaster ansible_user=root   ansible_host=mmaster
+
+[nodes]
+m1 ansible_user=root   ansible_host=m1
+m2 ansible_user=root   ansible_host=m2
+m3 ansible_user=root   ansible_host=m3

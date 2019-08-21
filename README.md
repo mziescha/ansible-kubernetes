@@ -15,7 +15,9 @@ These playbooks are created during a kubernetes course to practise
 
 to init a kubernetes cluster with one master and three nodes
 
-        ansible-playbook -i ansible/inventory/hosts ansible/playbooks/init.yml
+        git clone git@github.com:mziescha/ansible-kubernetes.git
+        cd ansible-kubernetes
+        ansible-playbook ansible/playbooks/cluster.yml --check
 
 Once done, you can check the results by browsing to http://localhost/index.php.
 You should see a simple test page and a list of databases retrieved from the

@@ -1,0 +1,7 @@
+---
+
+#- name: deploy ssh keys
+#  hosts: all
+#
+#- name: rollout ips into etc hosts
+#  hosts: all

@@ -1,4 +1,4 @@
-Building a simple LAMP stack and deploying Application using Ansible Playbooks.
+Building a simple cluster during a kubernetes course
 -------------------------------------------
 
 These playbooks require Ansible 1.2.

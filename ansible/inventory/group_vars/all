@@ -4,3 +4,4 @@
 docker_repo: "deb [arch=amd64] https://download.docker.com/linux/ubuntu xenial stable"
 kubernetes_repo: "deb https://apt.kubernetes.io/ kubernetes-xenial main"
 master_internal_ip: "12.12.12.12"
+global_log_dir: $HOME/log

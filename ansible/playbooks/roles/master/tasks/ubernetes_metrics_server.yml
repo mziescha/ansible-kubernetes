@@ -1,0 +1,10 @@
+---
+- name: CLone kubernetes metrics server
+  shell: "git clone {{ kubernetes_metrics_repo }}"
+  vars:
+    kubernetes_metrics_repo: https://github.com/kodekloudhub/kubernetes-metrics-server.git
+
+- name: Create kubernetes metrics server
+  shell: "kubectl create -f {{ kubernetes_metrics_dir }}/"
+  vars:
+    kubernetes_metrics_dir: kubernetes-metrics-server

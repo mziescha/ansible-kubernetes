@@ -8,8 +8,8 @@
 
 - name: Initialize the Kubernetes cluster using kubeadm
   command: kubeadm init --pod-network-cidr {{ ip_range }}
-  vars:
-    log_dir: "{{ global_log_dir }}"
+#  vars:
+#    log_dir: "{{ global_log_dir }}"
 
 - name: Apply kube-flannel
   command: kubectl apply -f {{ flannel_repo }}

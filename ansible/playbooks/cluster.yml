@@ -19,8 +19,9 @@
   roles:
     - master
 
-- name: deploy and configure the kubernetes nodes
-  hosts: nodes
-  remote_user: root
-  roles:
-    - nodes
+#- name: deploy and configure the kubernetes nodes
+#  hosts: nodes
+#  remote_user: root
+#  roles:
+#    - nodes
+#

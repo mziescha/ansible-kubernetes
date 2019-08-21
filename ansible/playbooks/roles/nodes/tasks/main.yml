@@ -1,4 +1,8 @@
 ---
 # This playbook will let the node join to the cluster
-- name: Join to cluster
-  shell: ""
+
+- name: join cluster
+  shell: "{{ hostvars['kmaster'].join_command }} >> node_joined.txt"
+  args:
+    chdir: "{{ global_log_dir }}"
+    creates: node_joined.txt

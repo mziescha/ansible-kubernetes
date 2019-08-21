@@ -1,0 +1,14 @@
+# Aply nfs into cluster
+---
+
+- name: configure and deploy the kubernetes master
+  hosts: master
+  remote_user: root
+  roles:
+    - nfs_mount_master
+
+- name: deploy and configure the kubernetes nodes
+  hosts: nodes
+  remote_user: root
+  roles:
+    - nfs_mount_nodes

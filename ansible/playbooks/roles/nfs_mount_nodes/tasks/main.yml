@@ -1,0 +1,19 @@
+# mount nfs dir
+---
+
+- name: Create mount point
+  file:
+    path: "{{ nfs_mount_point }}"
+    state: directory
+
+- name: install NFS client
+  apt:
+    name: nfs-common
+    state: present
+
+- name: mount nfs share
+  mount:
+    src: "{{ nfs_mount_ip }}:{{ nfs_path }}"
+    path: "{{ nfs_shared_path }}"
+    fstype: nfs
+    state: mounted

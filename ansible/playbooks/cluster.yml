@@ -1,11 +1,11 @@
 ---
 # This playbook deploys the whole application stack in this site.
 
-- name: init all nodes
-  hosts: all
-  remote_user: root
-  roles:
-    - init
+#- name: init all nodes
+#  hosts: all
+#  remote_user: root
+#  roles:
+#    - init
 
 - name: apply common configuration to all nodes
   hosts: all
@@ -19,9 +19,8 @@
   roles:
     - master
 
-#- name: deploy and configure the kubernetes nodes
-#  hosts: nodes
-#  remote_user: root
-#  roles:
-#    - nodes
-#
+- name: deploy and configure the kubernetes nodes
+  hosts: nodes
+  remote_user: root
+  roles:
+    - nodes

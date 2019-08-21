@@ -1,8 +1,16 @@
 ---
 # Variables listed here are applicable to all host groups
 
+docker_gpg: "https://download.docker.com/linux/ubuntu/gpg"
+
 docker_repo: "deb [arch=amd64] https://download.docker.com/linux/ubuntu xenial stable"
+
+kubernetes_gpg: "https://packages.cloud.google.com/apt/doc/apt-key.gpg"
+
 kubernetes_repo: "deb https://apt.kubernetes.io/ kubernetes-xenial main"
+
 master_internal_ip: "10.135.231.119"
 
 global_log_dir: $HOME/log
+
+nfs_path: "/data"

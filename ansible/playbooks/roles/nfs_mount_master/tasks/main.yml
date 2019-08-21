@@ -1,0 +1,25 @@
+---
+
+- name: create mount point (nobody)
+  file:
+    path: "{{ nfs_path }}"
+    state: directory
+    mode: '0755'
+    owner: nobody
+    group: nogroup
+
+- name: install nfs
+  apt:
+    name: nfs-kernel-server
+    state: present
+
+- name: configure exports
+  lineinfile:
+    path: "{{ nfs_export }}"
+    regex: "~{{ nfs_path }}"
+    line: "{{ nfs_path }} {{ ip_range }}(rw,all_squash)"
+
+- name: restart nfs
+  service:
+    name: nfs-kernel-server
+    state: restarted

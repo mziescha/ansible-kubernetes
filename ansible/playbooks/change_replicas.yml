@@ -1,0 +1,12 @@
+# Scale deployment up, and extend timeout
+---
+
+- name: Scale deployment up, and extend timeout
+  hosts: master
+  remote_user: root
+  tasks:
+    - name: Scale deployment up, and extend timeout
+      k8s_scale:
+        name: bandicoot
+        replicas: 3
+        

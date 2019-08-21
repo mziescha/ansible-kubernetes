@@ -14,3 +14,5 @@ master_internal_ip: "10.135.231.119"
 global_log_dir: $HOME/log
 
 nfs_path: "/data"
+
+external_ip: 206.189.49.53

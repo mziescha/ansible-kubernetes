@@ -1,0 +1,3 @@
+# main.yml
+# template: src=nginx.yml.j2 dest=/var/www/html/index.php
+---

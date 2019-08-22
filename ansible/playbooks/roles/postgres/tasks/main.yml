@@ -1,0 +1,51 @@
+---
+- name: Template a file to /etc/files.conf
+  template:
+    src: 01-postgres-configmap.yaml.ja
+    dest: /root/share/postgres/01-postgres-configmap.yaml
+    owner: root
+    mode: '0644'
+
+- name: kubectl create postgres configmap
+  shell: kubectl create -f /root/share/postgres/01-postgres-configmap.yaml
+
+- name: Template a file to /etc/files.conf
+  template:
+    src: 02-postgres-storage.yaml.ja
+    dest: /root/share/postgres/02-postgres-storage.yaml
+    owner: root
+    mode: '0644'
+
+- name: kubectl create postgres storage
+  shell: kubectl create -f /root/share/postgres/02-postgres-storage.yaml
+
+- name: Template a file to /etc/files.conf
+  template:
+    src: 03-postgres-storage-claim.yaml.ja
+    dest: /root/share/postgres/03-postgres-storage-claim.yaml
+    owner: root
+    mode: '0644'
+
+- name: kubectl create postgres storage claim
+  shell: kubectl create -f /root/share/postgres/003-postgres-storage-claim.yaml
+
+- name: Template a file to /etc/files.conf
+  template:
+    src: 04-postgres-deployment.yaml.ja
+    dest: /root/share/postgres/04-postgres-deployment.yaml
+    owner: root
+    mode: '0644'
+
+- name: kubectl create postgres deployment
+  shell: kubectl create -f /root/share/postgres/04-postgres-deployment.yaml
+
+- name: Template a file to /etc/files.conf
+  template:
+    src: 05-postgres-service.yaml.ja
+    dest: /root/share/postgres/05-postgres-service.yaml
+    owner: root
+    mode: '0644'
+
+- name: kubectl create postgres service
+  shell: kubectl create -f /root/share/postgres/05-postgres-service.yaml
+

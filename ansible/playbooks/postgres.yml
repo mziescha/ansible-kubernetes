@@ -1,0 +1,8 @@
+# Exercise set up postgres server
+---
+
+- name: run postgres and make it public
+  hosts: master
+  remote_user: root
+  roles:
+    - postgres

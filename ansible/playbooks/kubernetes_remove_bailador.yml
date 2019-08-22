@@ -1,0 +1,19 @@
+# Exercise remove dancer webserver
+---
+
+- name: run dancer webserver and make it public
+  hosts: master
+  remote_user: root
+  tasks:
+    - name: kubectl delete old deployments
+      shell: kubectl delete deployments {{ name }}
+      vars:
+        name: bailador-mza
+    - name: kubectl delete old services
+      shell: kubectl delete services {{ name }}
+      vars:
+        name: bailador-mza
+    - name: kubectl delete old horizontalpodautoscalers.autoscaling
+      shell: kubectl delete horizontalpodautoscalers.autoscaling {{ name }}
+      vars:
+        name: bailador-mza

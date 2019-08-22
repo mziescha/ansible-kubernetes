@@ -1,0 +1,42 @@
+# Exercise set up bailador webserver
+---
+
+- name: run bailador webserver and make it public
+  hosts: master
+  remote_user: root
+  tasks:
+    - name: kubectl create webserver {{ name }}
+      shell: kubectl create deployment {{ name }} --image={{ image }}
+      vars:
+        name: bailador-mza
+        image: mienaikage/bailador
+    - name: kubectl expose {{ name }}
+      shell: kubectl expose deployment {{ name }} --external-ip={{ external_ip }} --port={{ port }} --target-port={{ target_port }}
+      vars:
+        name: bailador-mza
+        port: 8084
+        target_port: 3000
+    - name: kubectl autoscale {{ name }}
+      shell: kubectl autoscale deployment {{ name }} --min={{ min }} --max={{ max }} --cpu-percent={{ cpu_percent }}
+      vars:
+        name: bailador-mza
+        min: 1
+        max: 5
+        cpu_percent: 50
+    - name: kubectl set resources {{ name }}
+      shell: kubectl set resources deployment {{ name }} --limits=cpu={{ cpu_limit }},memory={{ memory_limit }} --requests=cpu={{ cpu_requests }},memory={{ memory_requests }}
+      vars:
+        name: bailador-mza
+        cpu_limit: "200m"
+        cpu_requests: "100m"
+        memory_limit: "512Mi"
+        memory_requests: "256Mi"
+
+#    - name: kubectl create for bailador webserver 
+#      shell: kubectl create {{ name }} --image={{ image }} --replicas={{ replicas }} --port={{ port }} --labels="{{ labels }}"
+#      vars:
+#        name: bailador-mza
+#        port: 5000
+#        image: sherwind/bailador
+#        replicas: 2
+#        labels: ver=2,app=mziescha,env=prod

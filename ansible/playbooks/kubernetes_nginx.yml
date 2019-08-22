@@ -1,0 +1,54 @@
+# Exercise set up nginx webserver
+---
+
+- name: run nginx webserver and make it public
+  hosts: master
+  remote_user: root
+  tasks:
+    - name: kubectl delete old deployments
+      shell: kubectl delete deployments {{ name }}
+      vars:
+        name: nginx-mza
+    - name: kubectl delete old services
+      shell: kubectl delete services {{ name }}
+      vars:
+        name: nginx-mza
+    - name: kubectl delete old horizontalpodautoscalers.autoscaling
+      shell: kubectl delete horizontalpodautoscalers.autoscaling {{ name }}
+      vars:
+        name: nginx-mza
+    - name: kubectl create for webserver {{ name }}
+      shell: kubectl create deployment {{ name }} --image={{ image }}
+      vars:
+        name: nginx-mza
+        image: nginx
+    - name: kubectl expose {{ name }}
+      shell: kubectl expose deployment {{ name }} --external-ip={{ external_ip }} --port={{ port }} --target-port={{ target_port }}
+      vars:
+        name: nginx-mza
+        port: 8083
+        target_port: 80
+    - name: kubectl autoscale {{ name }}
+      shell: kubectl autoscale deployment {{ name }} --min={{ min }} --max={{ max }} --cpu-percent={{ cpu_percent }}
+      vars:
+        name: nginx-mza
+        min: 1
+        max: 7
+        cpu_percent: 50
+    - name: kubectl set resources {{ name }}
+      shell: kubectl set resources deployment {{ name }} --limits=cpu={{ cpu_limit }},memory={{ memory_limit }} --requests=cpu={{ cpu_requests }},memory={{ memory_requests }}
+      vars:
+        name: nginx-mza
+        cpu_limit: "200m"
+        cpu_requests: "100m"
+        memory_limit: "512Mi"
+        memory_requests: "256Mi"
+
+#    - name: kubectl create for nginx webserver 
+#      shell: kubectl create {{ name }} --image={{ image }} --replicas={{ replicas }} --port={{ port }} --labels="{{ labels }}"
+#      vars:
+#        name: nginx-mza
+#        port: 5000
+#        image: sherwind/nginx
+#        replicas: 2
+#        labels: ver=2,app=mziescha,env=prod
